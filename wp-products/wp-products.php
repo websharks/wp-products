@@ -51,7 +51,7 @@ class wp_products
 			);
 			register_post_type('product', $post_type_args);
 
-			$taxonomy_args = array // Categories.
+			$category_taxonomy_args = array // Categories.
 			(
 				'public'       => TRUE, 'show_admin_column' => TRUE,
 				'hierarchical' => TRUE, // This will use category labels.
@@ -61,7 +61,18 @@ class wp_products
 				                        'manage_terms' => 'edit_others_products',
 				                        'delete_terms' => 'delete_others_products')
 			);
-			register_taxonomy('product_category', array('product'), $taxonomy_args);
+			register_taxonomy('product_category', array('product'), $category_taxonomy_args);
+
+			$tag_taxonomy_args = array // Tags.
+			(
+				'public'       => TRUE, 'show_admin_column' => TRUE,
+				'rewrite'      => array('slug' => 'product-tag', 'with_front' => FALSE),
+				'capabilities' => array('assign_terms' => 'edit_products',
+				                        'edit_terms'   => 'edit_products',
+				                        'manage_terms' => 'edit_others_products',
+				                        'delete_terms' => 'delete_others_products')
+			);
+			register_taxonomy('product_tag', array('product'), $tag_taxonomy_args);
 		}
 
 	public static function caps($action)
