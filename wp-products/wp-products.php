@@ -55,7 +55,7 @@ class wp_products
 			(
 				'public'       => TRUE, 'show_admin_column' => TRUE,
 				'hierarchical' => TRUE, // This will use category labels.
-				'rewrite'      => array('slug' => 'pcat', 'with_front' => FALSE),
+				'rewrite'      => array('slug' => 'product-category', 'with_front' => FALSE),
 				'capabilities' => array('assign_terms' => 'edit_products',
 				                        'edit_terms'   => 'edit_products',
 				                        'manage_terms' => 'edit_others_products',
