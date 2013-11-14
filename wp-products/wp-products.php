@@ -152,7 +152,7 @@ class wp_products // WP Products; a new custom post type for WordPress.
 
 	public static function activate()
 		{
-			wp_products::register();
+			wp_products::init();
 			wp_products::caps('activate');
 			flush_rewrite_rules();
 		}
