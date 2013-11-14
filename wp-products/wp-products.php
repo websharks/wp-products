@@ -13,15 +13,27 @@ Description: Create Products! This plugin adds a new Post Type. That's it (for n
 if(!defined('WPINC')) // MUST have WordPress.
 	exit('Do NOT access this file directly: '.basename(__FILE__));
 
-add_action('init', 'wp_products::init', 1);
-register_activation_hook(__FILE__, 'wp_products::activate');
-register_deactivation_hook(__FILE__, 'wp_products::deactivate');
+if(!defined('WP_PRODUCT_ROLES_ALL_CAPS')) define('WP_PRODUCT_ROLES_ALL_CAPS', 'administrator');
+if(!defined('WP_PRODUCT_ROLES_EDIT_CAPS')) define('WP_PRODUCT_ROLES_EDIT_CAPS', 'administrator,editor,author');
 
-class wp_products
+class wp_products // WP Products; a new custom post type for WordPress.
 {
-	public static function init()
+	public static $roles_all_caps = array(); // WP Roles; as array.
+	public static $roles_edit_caps = array(); // WP Roles; as array.
+
+	public static function init() // Initialize WP Products.
 		{
 			load_plugin_textdomain('wp-products');
+
+			if(WP_PRODUCT_ROLES_ALL_CAPS) // Specific Roles?
+				wp_products::$roles_all_caps = // Convert these to an array.
+					preg_split('/[\s;,]+/', WP_PRODUCT_ROLES_ALL_CAPS, NULL, PREG_SPLIT_NO_EMPTY);
+			wp_products::$roles_all_caps = apply_filters('wp_product_roles_all_caps', wp_products::$roles_all_caps);
+
+			if(WP_PRODUCT_ROLES_EDIT_CAPS) // Specific Roles?
+				wp_products::$roles_edit_caps = // Convert these to an array.
+					preg_split('/[\s;,]+/', WP_PRODUCT_ROLES_EDIT_CAPS, NULL, PREG_SPLIT_NO_EMPTY);
+			wp_products::$roles_edit_caps = apply_filters('wp_product_roles_edit_caps', wp_products::$roles_edit_caps);
 
 			wp_products::register();
 		}
@@ -93,19 +105,22 @@ class wp_products
 
 				'read_private_products'
 			);
-			foreach(apply_filters('wp_product_roles_all_caps', array('administrator')) as $_role)
-				if(is_object($_role = & get_role($_role)))
-					foreach($all_caps as $_cap) switch($action)
-					{
-						case 'activate':
-								$_role->add_cap($_cap);
-								break;
+			if($action === 'deactivate') // All on deactivate.
+				$_roles = array_keys($GLOBALS['wp_roles']->roles);
+			else $_roles = wp_products::$roles_all_caps;
 
-						case 'deactivate':
-								$_role->remove_cap($_cap);
-								break;
-					}
-			unset($_role, $_cap); // Housekeeping.
+			foreach($_roles as $_role) if(is_object($_role = get_role($_role)))
+				foreach($all_caps as $_cap) switch($action)
+				{
+					case 'activate':
+							$_role->add_cap($_cap);
+							break;
+
+					case 'deactivate':
+							$_role->remove_cap($_cap);
+							break;
+				}
+			unset($_roles, $_role, $_cap); // Housekeeping.
 
 			$edit_caps = array // The ability to edit/publish/delete.
 			(
@@ -117,19 +132,22 @@ class wp_products
 				'delete_products',
 				'delete_published_products'
 			);
-			foreach(apply_filters('wp_product_roles_edit_caps', array('administrator', 'editor', 'author')) as $_role)
-				if(is_object($_role = & get_role($_role)))
-					foreach($edit_caps as $_cap) switch($action)
-					{
-						case 'activate':
-								$_role->add_cap($_cap);
-								break;
+			if($action === 'deactivate') // All on deactivate.
+				$_roles = array_keys($GLOBALS['wp_roles']->roles);
+			else $_roles = wp_products::$roles_edit_caps;
 
-						case 'deactivate':
-								$_role->remove_cap($_cap);
-								break;
-					}
-			unset($_role, $_cap); // Housekeeping.
+			foreach($_roles as $_role) if(is_object($_role = get_role($_role)))
+				foreach((($action === 'deactivate') ? $all_caps : $edit_caps) as $_cap) switch($action)
+				{
+					case 'activate':
+							$_role->add_cap($_cap);
+							break;
+
+					case 'deactivate':
+							$_role->remove_cap($_cap);
+							break;
+				}
+			unset($_roles, $_role, $_cap); // Housekeeping.
 		}
 
 	public static function activate()
@@ -145,3 +163,7 @@ class wp_products
 			flush_rewrite_rules();
 		}
 }
+
+add_action('init', 'wp_products::init', 1);
+register_activation_hook(__FILE__, 'wp_products::activate');
+register_deactivation_hook(__FILE__, 'wp_products::deactivate');
