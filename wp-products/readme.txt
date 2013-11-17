@@ -50,8 +50,8 @@ NOTE: There are also some WordPress filters integrated into the code for this pl
 
 = WP Products is very easy to install (instructions) =
 1. Upload the `/wp-products` folder to your `/wp-content/plugins/` directory.
-2. Activate the plugin through the `Plugins` menu in WordPress®.
-3. Create Products in WordPress® (see: Dashboard -› Products).
+2. Activate the plugin through the **Plugins** menu in WordPress®.
+3. Create Products in WordPress® (see: **Dashboard -› Products**).
 
 == Changelog ==
 

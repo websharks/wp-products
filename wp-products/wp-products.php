@@ -58,7 +58,7 @@ class wp_products // WP Products; a new custom post type for WordPress.
 				'all_items'          => __('All Products', 'wp-products'),
 				'view_item'          => __('View Product', 'wp-products'),
 				'search_items'       => __('Search Products', 'wp-products'),
-				'not_found'          => __('No Product found', 'wp-products'),
+				'not_found'          => __('No Products found', 'wp-products'),
 				'not_found_in_trash' => __('No Products found in Trash', 'wp-products')
 			);
 			register_post_type('product', $post_type_args);
