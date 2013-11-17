@@ -24,7 +24,7 @@ After installing this plugin, create a new Product (find menu item on the left i
 
 == Frequently Asked Questions ==
 
-#### Who can manage Products in the Dashboard?
+= Who can manage Products in the Dashboard? =
 
 By default, only WordPress® Administrators can manage (i.e. create/edit/delete/manage) Products. Editors and Authors can create/edit/delete their own Products, but permissions are limited for Editors/Authors. If you would like to give other WordPress Roles the Capabilities required, please use a plugin like [Enhanced Capability Manager](http://wordpress.org/extend/plugins/capability-manager-enhanced/).
 
@@ -48,7 +48,8 @@ NOTE: There are also some WordPress filters integrated into the code for this pl
 
 == Installation ==
 
-= WP Products is very easy to install (instructions) =
+= WP Products is Very Easy to Install =
+
 1. Upload the `/wp-products` folder to your `/wp-content/plugins/` directory.
 2. Activate the plugin through the **Plugins** menu in WordPress®.
 3. Create Products in WordPress® (see: **Dashboard -› Products**).
@@ -56,4 +57,5 @@ NOTE: There are also some WordPress filters integrated into the code for this pl
 == Changelog ==
 
 = v131111 =
+
  * Initial release.
