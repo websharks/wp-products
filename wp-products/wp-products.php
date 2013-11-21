@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 131111
+Version: 131121
 Text Domain: wp-products
 Plugin Name: WP Products
 
