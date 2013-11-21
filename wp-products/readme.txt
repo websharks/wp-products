@@ -12,7 +12,7 @@ Contributors: WebSharks
 Donate link: http://www.websharks-inc.com/r/wp-theme-plugin-donation/
 Tags: product, products, ecommerce, e-commerce, post type, post types, utilities, posts, pages
 
-Create Products! This plugin adds a new Post Type. That's it (for now).
+Create Products! This plugin adds a new Post Type.
 
 == Description ==
 
