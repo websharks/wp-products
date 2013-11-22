@@ -1,13 +1,13 @@
 <?php
 /*
-Version: 131121
+Version: 131122
 Text Domain: wp-products
-Plugin Name: WP Products
+Plugin Name: Products
 
 Author URI: http://www.websharks-inc.com/
 Author: WebSharks, Inc. (Jason Caldwell)
 
-Plugin URI: http://www.websharks-inc.com/product/wp-products/
+Plugin URI: http://www.websharks-inc.com/product/products/
 Description: Create Products! This plugin adds a new Post Type.
 */
 if(!defined('WPINC')) // MUST have WordPress.
@@ -43,7 +43,7 @@ class wp_products // WP Products; a new custom post type for WordPress.
 			$post_type_args           = array
 			(
 				'public'       => TRUE,
-				'map_meta_cap' => TRUE, 'capability_type' => array('product', 'products'),
+				'map_meta_cap' => TRUE, 'capability_type' => array('product', 'wp-products'),
 				'rewrite'      => array('slug' => 'product', 'with_front' => FALSE), // Like a Post (but no Post Formats).
 				'supports'     => array('title', 'editor', 'author', 'excerpt', 'revisions', 'thumbnail', 'custom-fields', 'comments', 'trackbacks')
 			);

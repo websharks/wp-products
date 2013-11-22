@@ -1,6 +1,6 @@
 === WP Products ===
 
-Stable tag: 131121
+Stable tag: 131122
 Requires at least: 3.3
 Tested up to: 3.7.1
 Text Domain: wp-products
@@ -50,7 +50,7 @@ NOTE: There are also some WordPress filters integrated into the code for this pl
 
 = WP Products is Very Easy to Install =
 
-1. Upload the `/wp-products` folder to your `/wp-content/plugins/` directory.
+1. Upload the `/products` folder to your `/wp-content/plugins/` directory.
 2. Activate the plugin through the **Plugins** menu in WordPress®.
 3. Create Products in WordPress® (see: **Dashboard -› Products**).
 
@@ -76,6 +76,10 @@ Released under the terms of the [GNU General Public License](http://www.gnu.org/
 	- Font Awesome <http://fortawesome.github.io/Font-Awesome/>
 
 == Changelog ==
+
+= v131122 =
+
+* Updating plugin slug to `products` because `wp-products` was taken @ WordPress.org.
 
 = v131121 =
 
