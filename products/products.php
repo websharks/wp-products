@@ -42,7 +42,7 @@ class wp_products // WP Products; a new custom post type for WordPress.
 	{
 		$post_type_args           = array
 		(
-			'public'       => TRUE, 'has_archive' => TRUE,
+			'public'       => TRUE, 'has_archive' => 'products',
 			'map_meta_cap' => TRUE, 'capability_type' => array('product', 'products'),
 			'rewrite'      => array('slug' => 'product', 'with_front' => FALSE), // Like a Post (but no Post Formats).
 			'supports'     => array('title', 'editor', 'author', 'excerpt', 'revisions', 'thumbnail', 'custom-fields', 'comments', 'trackbacks')
