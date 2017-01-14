@@ -10,8 +10,8 @@ Author: WebSharks, Inc. (Jason Caldwell)
 Plugin URI: http://www.websharks-inc.com/product/products/
 Description: Create Products! This plugin adds a new Post Type.
 */
-if(!defined('WPINC')) // MUST have WordPress.
-	exit('Do NOT access this file directly: '.basename(__FILE__));
+if(!defined('WPINC'))
+	exit('Do NOT access this file directly.');
 
 if(!defined('WP_PRODUCT_ROLES_ALL_CAPS')) define('WP_PRODUCT_ROLES_ALL_CAPS', 'administrator');
 if(!defined('WP_PRODUCT_ROLES_EDIT_CAPS')) define('WP_PRODUCT_ROLES_EDIT_CAPS', 'administrator,editor,author');
